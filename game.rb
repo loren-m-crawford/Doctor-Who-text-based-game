@@ -11,11 +11,11 @@ class World
   end
 
   def move_player_forward(player)
-    player.y_coord -= 1 if player.y_coord > 0
+    player.y_coord += 1 if player.y_coord > 0
   end
 
   def move_player_backward(player)
-    player.y_coord += 1 if player.y_coord < floor_height - 1
+    player.y_coord -= 1 if player.y_coord < floor_height - 1
   end
 
   def move_player_right(player)
@@ -35,7 +35,7 @@ class World
   end
 
   def get_room_of(player)
-    @rooms[player.z_coord][player.x_coord][player.y_coord] ||= Room.new
+    @rooms[player.z_coord][player.x_coord][player.y_coord] 
   end
 
 end
@@ -43,22 +43,32 @@ end
 ############################################
 
 class Room
-	attr_accessor :size, :content
+	attr_accessor :locked, :room_ques, :room_num, :hint
 
 	def initialize
     @locked = get_lock_status
+    @room_ques = get_room_question
+    @room_num = 
+    @hint = get_hint
   end
 
   def get_lock_status
   	
   end
 
+  def get_room_question
+  	puts "You are in room #{room_num}. Your question is #{room_ques}."
+  end
+
+  def get_hint
+  	puts "You've answered correctly. Your hint is #{hint}. Continue to look for room 12."
+  end
 end 
 
 ############################################
 
 class Player
-
+attr_accessor :z_coord, :x_coord, :y_coord 
 	def initialize
     @z_coord, @x_coord, @y_coord = 1, 1, 0
   end
