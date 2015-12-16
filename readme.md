@@ -1,4 +1,4 @@
- # Taking the Long Way Round
+#Taking the Long Way Round
 
 This repo contains the beginning of a text-based game based on the penultimate episode of the ninth series of Doctor Who episode, "Heaven Sent", where the Doctor finds himself transported to a waterlocked castle with a vieled monster seeking to kill him (thanks Steven Moffat). 
 
@@ -9,6 +9,27 @@ Have fun and good luck!
 
 ##Technologies used 
 * Ruby 2.2.3
+
+---
+<!-- language: lang-none -->
+   	     /-\
+    _____|#|_____       
+   |_____________|
+  |_______________|
+|||_POLICE_##_BOX_|||
+ | |¯|¯|¯|||¯|¯|¯| | 
+ | |-|-|-|||-|-|-| |
+ | |_|_|_|||_|_|_| |
+ | ||~~~| | |¯¯¯|| |
+ | ||~~~|!|!| O || |
+ | ||~~~| |.|___|| |
+ | ||¯¯¯| | |¯¯¯|| |
+ | ||   | | |   || |
+ | ||___| | |___|| |
+ | ||¯¯¯| | |¯¯¯|| |
+ | ||   | | |   || |
+ | ||___| | |___|| |
+|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯| 
 
 
  
