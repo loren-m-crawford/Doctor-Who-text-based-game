@@ -22,7 +22,7 @@ ROOMS = {
 	},
 	[0,1,0] => {
 		'room number' => 15,
-		'hint' => 'Go forward to find what you seek.',
+		'hint' => 'Go left to find what you seek.',
 		'question' => 'What is the name of the scientist who created the Daleks?',
 		'answer' =>'davros',
 		'locked' => true
@@ -30,8 +30,8 @@ ROOMS = {
 	[0,1,1] => {
 		'room number' => nil,
 		'hint' => '',
-		'question' => '',
-		'answer' =>'',
+		'question' => 'hi',
+		'answer' =>'hi',
 		'locked' => true
 	},
 	[0,1,2] => {

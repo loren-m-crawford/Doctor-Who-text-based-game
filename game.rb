@@ -19,9 +19,11 @@ class Game
   	puts "You may move backward, forward, right, left, up, and down."
   	puts "Which direction would you like to go in first? Please type in 'backward', 'forward', 'right', 'left', 'up', and 'down.'"
 
-    
+  	get_player_move
+  end
 
-    while @player.current_room_num != 12 
+  def get_player_move
+  	 while @player.current_room_num != 12 
     	move = gets.chomp
      	if MOVES.include?(move)  
 	   	 move_player(move)
@@ -58,21 +60,17 @@ class World
 
 	def initialize
 		@room = Room.new
-    @castle = []
-    FLOORS.times do 
-    	@castle << Array.new(ROOMS_PER_FLOOR_HEIGHT, Array.new(ROOMS_PER_FLOOR_WIDTH))
-    end
   end
 
   def move_player_forward(player)
-    player.y_coord += 1 if player.y_coord > 0
+    player.y_coord += 1 if player.y_coord < ROOMS_PER_FLOOR_HEIGHT - 1
     puts 'You just moved forward.'
-    puts "You are at [#{player.z_coord},#{player.x_coord},#{player.y_coord}]."
+    puts "You are at [#{player.z_coord},#{player.x_coord},#{player.y_coord}]." 
     @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
   end
-
+# TO DO: ADD MORE LOGIC THAT TELLS PLAYER WHEN S/HE CANNOT MOVE FORWARD, BACKWARD, ETC
   def move_player_backward(player)
-    player.y_coord -= 1 if player.y_coord < ROOMS_PER_FLOOR_HEIGHT - 1
+    player.y_coord -= 1 if player.y_coord > 0
     puts 'You just moved backward.'
     puts "You are at [#{player.z_coord},#{player.x_coord},#{player.y_coord}]."
     @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
@@ -135,7 +133,7 @@ class Room
 
   def get_room_question(z_coord,x_coord,y_coord)
   	room_ques = ROOMS[[z_coord, x_coord, y_coord]]['question']
-  	print room_ques
+  	puts "#{room_ques }\n"
   end
 
   def get_player_answer(z_coord,x_coord,y_coord)
