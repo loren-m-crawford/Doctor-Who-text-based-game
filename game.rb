@@ -14,17 +14,36 @@ class Game
 
  private
   def start_game
-  	puts "Welcome! You are the Doctor in search for room 12."
-  	puts "You've just been transported to a three story castle. As you move through the castle, you will find numbered rooms that are locked. To unlock a room you must answer a question; if you answer it correctly, you will get a hint as to where room 12 is. If you answer incorrectly the door will not open and you must move on."
-  	puts "You may move backward, forward, right, left, up, and down."
-  	puts "Which direction would you like to go in first? Please type in 'backward', 'forward', 'right', 'left', 'up', and 'down.'"
+  	puts "This is a text-based game is based on the penultimate episode of the ninth series of \nDoctor Who episode, 'Heaven Sent', where the Doctor finds himself transported to a \nwaterlocked castle with a vieled monster seeking to kill him if he doesn't confess \nwhat he knows (thanks Steven Moffat)."
+
+		puts " 
+			    _____|#|_____
+			   |_____________|     		Welcome! 
+			  |_______________|	    	You are the Doctor in search for room 12.
+			|||_POLICE_##_BOX_|||		You've just been transported to a three story castle. 
+			 | |¯|¯|¯|||¯|¯|¯| | 
+			 | |-|-|-|||-|-|-| |		As you move through the castle, you will find numbered
+			 | |_|_|_|||_|_|_| |		rooms that are locked. To unlock a room you must answer a 
+			 | ||~~~| | |¯¯¯|| |		question; if you answer it correctly, you will get a hint
+			 | ||~~~|!|!| O || |		as to where room 12 is. If you answer incorrectly the door
+			 | ||~~~| |.|___|| |		will not open and you must move on.
+			 | ||¯¯¯| | |¯¯¯|| |
+			 | ||   | | |   || |		You may move backward, forward, right, left, up, and down.
+			 | ||___| | |___|| |
+			 | ||¯¯¯| | |¯¯¯|| |		Which direction would you like to go in first?
+			 | ||   | | |   || |
+			 | ||___| | |___|| |		Please type in 'backward', 'forward', 'right', 'left', 'up', 
+			|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|		and 'down.'
+			"
+ 
+  	
 
   	get_player_move
   end
 
   def get_player_move
   	 while @player.current_room_num != 12 
-    	move = gets.chomp
+    	move = gets.chomp.downcase
      	if MOVES.include?(move)  
 	   	 move_player(move)
 	   	else
