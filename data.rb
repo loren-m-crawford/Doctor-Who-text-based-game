@@ -22,16 +22,16 @@ ROOMS = {
 	},
 	[0,0,1] => {
 		'room number' => 15,
-		'hint' => 'Go left to find what you seek.',
+		'hint' => 'Go forward to find what you seek.',
 		'question' => 'What is the name of the scientist who created the Daleks?',
 		'answer' =>'davros',
 		'locked' => true
 	},
 	[0,1,1] => {
-		'room number' => nil,
-		'hint' => '',
-		'question' => 'hi',
-		'answer' =>'hi',
+		'room number' => "garden",
+		'hint' => 'You found the garden, there are no hints here.',
+		'question' => '',
+		'answer' =>'',
 		'locked' => true
 	},
 	[0,2,1] => {
@@ -91,8 +91,8 @@ ROOMS = {
 		'locked' => true
 	},
 	[1,1,1] => {
-		'room number' => nil,
-		'hint' => '',
+		'room number' => "garden",
+		'hint' => 'You found the garden, there are no hints here.',
 		'question' => '',
 		'answer' =>'',
 		'locked' => false
@@ -154,8 +154,8 @@ ROOMS = {
 		'locked' => true
 	},
 	[2,1,1] => {
-		'room number' => nil,
-		'hint' => '',
+		'room number' => "garden",
+		'hint' => 'You found the garden, there are no hints here.',
 		'question' => '',
 		'answer' =>'',
 		'locked' => true

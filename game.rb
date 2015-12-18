@@ -63,45 +63,69 @@ class World
   end
 
   def move_player_forward(player)
-    player.y_coord += 1 if player.y_coord < ROOMS_PER_FLOOR_HEIGHT - 1
-    puts 'You just moved forward.'
-    puts "You are at [#{player.z_coord},#{player.x_coord},#{player.y_coord}]." 
-    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+  	if player.y_coord < ROOMS_PER_FLOOR_HEIGHT - 1
+	    player.y_coord += 1 
+	    puts 'You just moved forward.'
+	   	@room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
+	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+	  else
+	  	puts "You can't move forward. Try another direction."
+	  end
   end
-# TO DO: ADD MORE LOGIC THAT TELLS PLAYER WHEN S/HE CANNOT MOVE FORWARD, BACKWARD, ETC
+
   def move_player_backward(player)
-    player.y_coord -= 1 if player.y_coord > 0
-    puts 'You just moved backward.'
-    puts "You are at [#{player.z_coord},#{player.x_coord},#{player.y_coord}]."
-    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+		if player.y_coord > 0
+			player.y_coord -= 1
+	    puts 'You just moved backward.'
+	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
+	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+	  else
+	  	puts "You can't move backward. Try another direction."
+	  end 
   end
 
   def move_player_right(player)
-    player.x_coord += 1 if player.x_coord < ROOMS_PER_FLOOR_WIDTH - 1
-    puts 'You just moved right.'
-    puts "You are at [#{player.z_coord},#{player.x_coord},#{player.y_coord}]."
-    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+    if player.x_coord < ROOMS_PER_FLOOR_WIDTH - 1
+    	player.x_coord += 1 
+	    puts 'You just moved right.'
+	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
+	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+	  else
+	  	puts "You can't move right. Try another direction."
+	  end 
   end
 
   def move_player_left(player)
-    player.x_coord -= 1 if player.x_coord > 0
-    puts 'You just moved left.'
-    puts "You are at [#{player.z_coord},#{player.x_coord},#{player.y_coord}]."
-    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+    if player.x_coord > 0 
+    	player.x_coord -= 1 
+	    puts 'You just moved left.'
+	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
+	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+	  else
+	  	puts "You can't move left. Try another direction."
+	  end 
   end
 
   def move_player_up_floor(player)
-  	player.z_coord += 1 if player.z_coord < FLOORS - 1
-  	puts 'You just moved up a floor.'
-    puts "You are at [#{player.z_coord},#{player.x_coord},#{player.y_coord}]."
-    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+  	if player.z_coord < FLOORS - 1
+  		player.z_coord += 1 
+	  	puts 'You just moved up a floor.'
+	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
+	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+	  else
+	  	puts "You can't move up a floor. Try another direction."
+	  end 
   end
 
   def move_player_down_floor(player)
-  	player.z_coord -= 1 if player.z_coord > 0
-  	puts 'You just moved down a floor.'
-    puts "You are at [#{player.z_coord},#{player.x_coord},#{player.y_coord}]."
-    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+  	if player.z_coord > 0
+  		player.z_coord -= 1 
+	  	puts 'You just moved down a floor.'
+	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
+	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
+	  else
+	  	puts "You can't move down a floor. Try another direction."
+	  end
   end
 
   
@@ -125,20 +149,36 @@ class Room
   def get_lock_status(z_coord,x_coord,y_coord)
   	locked = ROOMS[[z_coord, x_coord, y_coord]]['locked']
   	if locked == true
-  		puts "This room is locked. You must answer a question." 
+  		puts "This room is locked. To get a hint you've got to answer this question." 
   	else
   		puts "This room is not locked."
+  		get_hint(z_coord,x_coord,y_coord)
   	end 
+  end
+
+  def get_room_num(z_coord,x_coord,y_coord)
+  	room_num = ROOMS[[z_coord, x_coord, y_coord]]['room number']
+  	puts "You're about to enter room number #{room_num}."
   end
 
   def get_room_question(z_coord,x_coord,y_coord)
   	room_ques = ROOMS[[z_coord, x_coord, y_coord]]['question']
+  	puts "\n"
   	puts "#{room_ques }\n"
   end
 
   def get_player_answer(z_coord,x_coord,y_coord)
+  	positive_feedback = [
+  		'Correct!',"You must be a mad man with a box, because that's correct!", 
+  		"Did you just pretend that was a plan? Well it worked!",
+  		"Aren't you a right good Whovian!?", 
+  		"Well done! That wasn't wibbly wobbly at all! :)"]
   	answer = gets.chomp
   	if answer.downcase === ROOMS[[z_coord, x_coord, y_coord]]['answer']
+  		puts '|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'
+  		puts positive_feedback.sample
+  		puts '----------------------------------------------------------------------'
+  		puts "		Here's a hint to help you find room 12:"
   		get_hint(z_coord,x_coord,y_coord)
   	else
   		puts "That's not right. Keep looking for room 12."
@@ -147,7 +187,9 @@ class Room
 
   def get_hint(z_coord,x_coord,y_coord)
   	hint = ROOMS[[z_coord, x_coord, y_coord]]['hint']
-  	puts "You've answered correctly. Your hint is: #{hint} Keep looking for room 12." 
+  	puts "		#{hint}"
+		puts '----------------------------------------------------------------------'
+  	puts "Keep searching." 
   end
 end 
 
@@ -157,7 +199,7 @@ class Player
 attr_accessor :z_coord, :x_coord, :y_coord 
 
 	def initialize
-    @z_coord, @x_coord, @y_coord = 1, 1, 0
+    @z_coord, @x_coord, @y_coord = 1, 0, 1
   end
 
   def current_room_num
