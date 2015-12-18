@@ -1,4 +1,4 @@
-rooms = {
+ROOMS = {
 	[0,0,0] => {
 		'room number' => 18,
 		'hint' => 'You are on the right floor.',
@@ -86,7 +86,7 @@ rooms = {
 	[1,1,0] => {
 		'room number' => 0,
 		'hint' => '',
-		'question' => '',
+		'question' => 'THIS IS THE QUESTION',
 		'answer' =>'',
 		'locked' => true
 	},
