@@ -35,14 +35,12 @@ class Game
 			 | ||___| | |___|| |		Please type in 'backward', 'forward', 'right', 'left', 'up', 
 			|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|		and 'down.'
 			"
- 
-  	
 
   	get_player_move
   end
 
   def get_player_move
-  	 while @player.current_room_num != 12 
+  	 while @world.room.get_room_num(@player.z_coord,@player.x_coord,@player.y_coord) != 12 
     	move = gets.chomp.downcase
      	if MOVES.include?(move)  
 	   	 move_player(move)
@@ -73,6 +71,7 @@ end
 #########################################
 
 class World
+	attr_accessor :room
 	FLOORS = 3
 	ROOMS_PER_FLOOR_WIDTH = 3
 	ROOMS_PER_FLOOR_HEIGHT = 3
@@ -85,7 +84,6 @@ class World
   	if player.y_coord < ROOMS_PER_FLOOR_HEIGHT - 1
 	    player.y_coord += 1 
 	    puts 'You just moved forward.'
-	   	@room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
 	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
 	  else
 	  	puts "You can't move forward. Try another direction."
@@ -96,7 +94,6 @@ class World
 		if player.y_coord > 0
 			player.y_coord -= 1
 	    puts 'You just moved backward.'
-	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
 	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
 	  else
 	  	puts "You can't move backward. Try another direction."
@@ -107,7 +104,6 @@ class World
     if player.x_coord < ROOMS_PER_FLOOR_WIDTH - 1
     	player.x_coord += 1 
 	    puts 'You just moved right.'
-	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
 	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
 	  else
 	  	puts "You can't move right. Try another direction."
@@ -118,7 +114,6 @@ class World
     if player.x_coord > 0 
     	player.x_coord -= 1 
 	    puts 'You just moved left.'
-	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
 	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
 	  else
 	  	puts "You can't move left. Try another direction."
@@ -129,7 +124,6 @@ class World
   	if player.z_coord < FLOORS - 1
   		player.z_coord += 1 
 	  	puts 'You just moved up a floor.'
-	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
 	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
 	  else
 	  	puts "You can't move up a floor. Try another direction."
@@ -140,14 +134,11 @@ class World
   	if player.z_coord > 0
   		player.z_coord -= 1 
 	  	puts 'You just moved down a floor.'
-	    @room.get_room_num(player.z_coord,player.x_coord,player.y_coord)
 	    @room.enter_room(player.z_coord,player.x_coord,player.y_coord)
 	  else
 	  	puts "You can't move down a floor. Try another direction."
 	  end
   end
-
-  
 end
 
 ############################################
@@ -155,19 +146,22 @@ end
 class Room
 	attr_accessor :locked, :room_ques, :room_num, :hint, :z_coord, :x_coord, :y_coord 
 
-	# def initialize
-   
- #  end
-
   def enter_room(z_coord,x_coord,y_coord)
-  	get_lock_status(z_coord,x_coord,y_coord)
-  	get_room_question(z_coord,x_coord,y_coord)
-  	get_player_answer(z_coord,x_coord,y_coord)
+  	if ROOMS[[z_coord, x_coord, y_coord]]['room number'] != 12
+  		get_lock_status(z_coord,x_coord,y_coord)
+	  	get_room_question(z_coord,x_coord,y_coord)
+	  	get_player_answer(z_coord,x_coord,y_coord)
+	  else
+	  	puts "You've reached room 12. This is why you're here:"
+	  	puts ""
+  	end
   end
 
   def get_lock_status(z_coord,x_coord,y_coord)
+  	room_num = ROOMS[[z_coord, x_coord, y_coord]]['room number']
   	locked = ROOMS[[z_coord, x_coord, y_coord]]['locked']
   	if locked == true
+  		puts "You are about to enter room number #{room_num}."
   		puts "This room is locked. To get a hint you've got to answer this question." 
   	else
   		puts "This room is not locked."
@@ -175,9 +169,8 @@ class Room
   	end 
   end
 
-  def get_room_num(z_coord,x_coord,y_coord)
-  	room_num = ROOMS[[z_coord, x_coord, y_coord]]['room number']
-  	puts "You're about to enter room number #{room_num}."
+  def get_room_num(z_coord,x_coord,y_coord) 
+  	ROOMS[[z_coord, x_coord, y_coord]]['room number']
   end
 
   def get_room_question(z_coord,x_coord,y_coord)
@@ -221,9 +214,9 @@ attr_accessor :z_coord, :x_coord, :y_coord
     @z_coord, @x_coord, @y_coord = 1, 0, 1
   end
 
-  def current_room_num
-  	ROOMS[[@z_coord,@x_coord,@y_coord]]['room number']
-  end 
+  # def current_room_num
+  # 	current_room_num = ROOMS[[@z_coord,@x_coord,@y_coord]]['room number']
+  # end 
 end
 
 ############################################

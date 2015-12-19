@@ -43,9 +43,9 @@ ROOMS = {
 	},
 	[0,0,2] => {
 		'room number' => 12,
-		'hint' => 'You have reached room 12. Are you ready to find out who put you here?',
-		'question' => 'You have reached room 12. Are you ready to find out who put you here?',
-		'answer' =>'yes',
+		'hint' => '',
+		'question' => '',
+		'answer' =>'',
 		'locked' => true
 	},
 	[0,1,2] => {
@@ -170,7 +170,7 @@ ROOMS = {
 	[2,0,2] => {
 		'room number' => 5,
 		'hint' => 'You are on top of what you seek.',
-		'question' => 'What did the tenth Doctor say to avoid being displaced in time by the weeping angles?',
+		'question' => 'What did the tenth Doctor tell Sally Sparrow to do to avoid being displaced in time by the weeping angels?',
 		'answer' =>"don't blink",
 		'locked' => true
 	},
