@@ -28,10 +28,10 @@ ROOMS = {
 		'locked' => true
 	},
 	[0,1,1] => {
-		'room number' => "garden",
-		'hint' => 'You found the garden, there are no hints here.',
-		'question' => '',
-		'answer' =>'',
+		'room number' => 19,
+		'hint' => 'You are very close.',
+		'question' => 'Where did the Doctor first meet River Song?',
+		'answer' =>'the library',
 		'locked' => true
 	},
 	[0,2,1] => {
@@ -86,9 +86,9 @@ ROOMS = {
 	[1,0,1] => {
 		'room number' => 0,
 		'hint' => '',
-		'question' => 'THIS IS THE QUESTION',
+		'question' => '',
 		'answer' =>'',
-		'locked' => true
+		'locked' => false
 	},
 	[1,1,1] => {
 		'room number' => "garden",
@@ -113,7 +113,7 @@ ROOMS = {
 	},
 	[1,1,2] => {
 		'room number' => 1,
-		'hint' => 'There are 18 rooms in the castle, a hall, a courtyard, and a kitchen. The courtyard and hall both take up two floors.',
+		'hint' => 'There are 19 rooms in the castle, as well as a hall, a courtyard, a garden, and a kitchen. The garden, courtyard and hall all take up two floors.',
 		'question' => "What is the name of Amy and Rory's daughter?",
 		'answer' =>'river song',
 		'locked' => true
@@ -158,7 +158,7 @@ ROOMS = {
 		'hint' => 'You found the garden, there are no hints here.',
 		'question' => '',
 		'answer' =>'',
-		'locked' => true
+		'locked' => false
 	},
 	[2,2,1] => {
 		'room number' => 'hall',

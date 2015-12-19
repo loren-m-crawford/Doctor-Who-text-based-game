@@ -165,7 +165,7 @@ class Room
   		puts "This room is locked. To get a hint you've got to answer this question." 
   	else
   		puts "This room is not locked."
-  		get_hint(z_coord,x_coord,y_coord)
+ 			get_player_move
   	end 
   end
 
