@@ -8,7 +8,7 @@ ROOMS = {
 	},
 	[0,1,0] => {
 		'room number' => 13,
-		'hint' => 'Going backward would be better than going forward.',
+		'hint' => 'Going foward would be better than going backward.',
 		'question' => "What is River Song's name at birth?",
 		'answer' =>'melody pond',
 		'locked' => true

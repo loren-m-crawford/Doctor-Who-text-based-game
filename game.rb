@@ -150,7 +150,7 @@ class Room
   def enter_room(z_coord,x_coord,y_coord)
   	if ROOMS[[z_coord, x_coord, y_coord]]['locked'] == false
   		get_room_num(z_coord,x_coord,y_coord)
-  		puts "This room is not locked. Rooms that are not locked don't provide hints. Keep searching--select a direction."
+  		puts "This room is not locked or has been unlocked. Rooms that are not locked don't provide hints. Keep searching--select a direction."
   	elsif ROOMS[[z_coord, x_coord, y_coord]]['room number'] != 12 
   		get_room_num(z_coord,x_coord,y_coord)
   		get_lock_status(z_coord,x_coord,y_coord)
@@ -193,6 +193,7 @@ class Room
   		"Well done! That wasn't wibbly wobbly at all! :)"]
   	answer = gets.chomp
   	if answer.downcase === ROOMS[[z_coord, x_coord, y_coord]]['answer']
+  		ROOMS[[z_coord, x_coord, y_coord]]['locked'] = false
   		puts '|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'
   		puts positive_feedback.sample
   		puts '----------------------------------------------------------------------'
