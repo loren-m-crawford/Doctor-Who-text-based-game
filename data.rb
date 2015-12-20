@@ -64,7 +64,7 @@ ROOMS = {
 	},
 	[1,0,0] => {
 		'room number' => 'courtyard',
-		'hint' => 'You found the courtyard, there are no hints here.',
+		'hint' => '',
 		'question' => '',
 		'answer' =>'',
 		'locked' => false
@@ -84,7 +84,7 @@ ROOMS = {
 		'locked' => true
 	},
 	[1,0,1] => {
-		'room number' => 'the room you started in. No hints here.',
+		'room number' => 'the room you started in.',
 		'hint' => '', 
 		'question' => '',
 		'answer' =>'',
@@ -92,14 +92,14 @@ ROOMS = {
 	},
 	[1,1,1] => {
 		'room number' => "garden",
-		'hint' => 'You found the garden, there are no hints here.',
+		'hint' => '',
 		'question' => '',
 		'answer' =>'',
 		'locked' => false
 	},
 	[1,2,1] => {
 		'room number' => 'hall',
-		'hint' => 'You have found the hall. There are no hints here.',
+		'hint' => '',
 		'question' => '',
 		'answer' =>'',
 		'locked' => false
@@ -120,14 +120,14 @@ ROOMS = {
 	},
 	[1,2,2] => {
 		'room number' => 'kitchen',
-		'hint' => 'You have found the kitchen. There are no hints here.',
+		'hint' => '',
 		'question' => '',
 		'answer' =>'',
 		'locked' => false
 	},
 	[2,0,0] => {
 		'room number' => 'courtyard',
-		'hint' => 'You have found the courtyard. There are no hints here.',
+		'hint' => '',
 		'question' => '',
 		'answer' =>'',
 		'locked' => false
@@ -155,14 +155,14 @@ ROOMS = {
 	},
 	[2,1,1] => {
 		'room number' => "garden",
-		'hint' => 'You found the garden, there are no hints here.',
+		'hint' => '',
 		'question' => '',
 		'answer' =>'',
 		'locked' => false
 	},
 	[2,2,1] => {
 		'room number' => 'hall',
-		'hint' => 'You have found the hall. There are no hints here.',
+		'hint' => '',
 		'question' => '',
 		'answer' =>'',
 		'locked' => false
