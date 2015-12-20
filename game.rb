@@ -158,7 +158,7 @@ class Room
       get_player_answer(z_coord,x_coord,y_coord)
     else
       puts "Congratulations!"
-      puts "You've reached room 12.\n Rassilon put you in your confession dial in order to gain information about the  Hybrid. \n Now you must remove Rassilon from Gallifrey and find out why he need the information. \n"
+      puts "You've reached room 12.\n Rassilon put you in your confession dial in order to gain information about the Hybrid. \n Now you must remove Rassilon from Gallifrey and find out why he need the information. \n"
       puts "You're next journey awaits!"
       puts ' 
                          _-_

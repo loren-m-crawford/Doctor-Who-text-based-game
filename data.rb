@@ -108,7 +108,7 @@ ROOMS = {
 		'room number' => 7,
 		'hint' => 'The rooms are not in order',
 		'question' => 'What do the Daleks call the Doctor on their planet?',
-		'answer' =>'the deadly traveller',
+		'answer' =>'the deadly traveler',
 		'locked' => true
 	},
 	[1,1,2] => {
