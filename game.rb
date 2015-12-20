@@ -40,10 +40,11 @@ class Game
   end
 
   def get_player_move
-  	 while @world.room.get_room_num(@player.z_coord,@player.x_coord,@player.y_coord) != 12 
+  	 while ROOMS[[@player.z_coord,@player.x_coord,@player.y_coord]]['room number'] != 12 
     	move = gets.chomp.downcase
      	if MOVES.include?(move)  
 	   	 move_player(move)
+	   	 puts "\n"
 	   	else
 	   		puts "That's not a valid move. Please type in 'backward', 'forward', 'right', 'left', 'up', and 'down.'"
 	  	end 
@@ -147,30 +148,35 @@ class Room
 	attr_accessor :locked, :room_ques, :room_num, :hint, :z_coord, :x_coord, :y_coord 
 
   def enter_room(z_coord,x_coord,y_coord)
-  	if ROOMS[[z_coord, x_coord, y_coord]]['room number'] != 12
+  	if ROOMS[[z_coord, x_coord, y_coord]]['locked'] == false
+  		get_room_num(z_coord,x_coord,y_coord)
+  		puts "This room is not locked. Rooms that are not locked don't provide hints. Keep searching--select a direction."
+  	elsif ROOMS[[z_coord, x_coord, y_coord]]['room number'] != 12 
+  		get_room_num(z_coord,x_coord,y_coord)
   		get_lock_status(z_coord,x_coord,y_coord)
 	  	get_room_question(z_coord,x_coord,y_coord)
 	  	get_player_answer(z_coord,x_coord,y_coord)
 	  else
-	  	puts "You've reached room 12. This is why you're here:"
-	  	puts ""
+	  	puts "Congratulations!"
+	  	puts "You've reached room 12! This is why you're here:"
+	  	puts "As you come into this world, something else is also born. You begin your life, and it begins a journey towards you. It moves slowly, but it never stops. Whatever path you take, it will follow - never faster, never slower, always coming. You will run, it will walk. You will rest, it will not. One day, you will linger in the same place too long, you will sit too still, you will sleep too deep. And when, too late, you rise to go, you will notice a second shadow next to yours. Your life will then be over."
   	end
   end
 
   def get_lock_status(z_coord,x_coord,y_coord)
-  	room_num = ROOMS[[z_coord, x_coord, y_coord]]['room number']
   	locked = ROOMS[[z_coord, x_coord, y_coord]]['locked']
   	if locked == true
-  		puts "You are about to enter room number #{room_num}."
   		puts "This room is locked. To get a hint you've got to answer this question." 
-  	else
-  		puts "This room is not locked."
- 			get_player_move
   	end 
   end
 
   def get_room_num(z_coord,x_coord,y_coord) 
-  	ROOMS[[z_coord, x_coord, y_coord]]['room number']
+  	room_num = ROOMS[[z_coord, x_coord, y_coord]]['room number']
+  	if room_num.is_a?Fixnum 
+  		puts "You are about to enter room #{room_num}."
+  	else
+  		puts "You're about to enter the #{room_num}."
+  	end
   end
 
   def get_room_question(z_coord,x_coord,y_coord)
@@ -213,10 +219,6 @@ attr_accessor :z_coord, :x_coord, :y_coord
 	def initialize
     @z_coord, @x_coord, @y_coord = 1, 0, 1
   end
-
-  # def current_room_num
-  # 	current_room_num = ROOMS[[@z_coord,@x_coord,@y_coord]]['room number']
-  # end 
 end
 
 ############################################

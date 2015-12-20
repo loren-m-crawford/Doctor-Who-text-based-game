@@ -84,8 +84,8 @@ ROOMS = {
 		'locked' => true
 	},
 	[1,0,1] => {
-		'room number' => 0,
-		'hint' => '',
+		'room number' => 'This is where you started. No hints here.',
+		'hint' => '', 
 		'question' => '',
 		'answer' =>'',
 		'locked' => false
@@ -120,10 +120,10 @@ ROOMS = {
 	},
 	[1,2,2] => {
 		'room number' => 'kitchen',
-		'hint' => 'You have found the kitche. There are no hints here.',
+		'hint' => 'You have found the kitchen. There are no hints here.',
 		'question' => '',
 		'answer' =>'',
-		'locked' => true
+		'locked' => false
 	},
 	[2,0,0] => {
 		'room number' => 'courtyard',
@@ -135,7 +135,7 @@ ROOMS = {
 	[2,1,0] => {
 		'room number' => 3,
 		'hint' => "You're getting colder.",
-		'question' => 'What race has shape-shifting abilities?',
+		'question' => 'What race from Doctor Who has shape-shifting abilities?',
 		'answer' =>'zygons',
 		'locked' => true
 	},
@@ -150,7 +150,7 @@ ROOMS = {
 		'room number' => 11,
 		'hint' => 'Go forward and what you need to do will be revealed.',
 		'question' => 'What creatures are immediately forgotten after you stop looking at them?',
-		'answer' =>'the silience',
+		'answer' =>'the silence',
 		'locked' => true
 	},
 	[2,1,1] => {
@@ -165,7 +165,7 @@ ROOMS = {
 		'hint' => 'You have found the hall. There are no hints here.',
 		'question' => '',
 		'answer' =>'',
-		'locked' => true
+		'locked' => false
 	},
 	[2,0,2] => {
 		'room number' => 5,
