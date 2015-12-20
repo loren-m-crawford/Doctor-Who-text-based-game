@@ -158,8 +158,32 @@ class Room
 	  	get_player_answer(z_coord,x_coord,y_coord)
 	  else
 	  	puts "Congratulations!"
-	  	puts "You've reached room 12! This is why you're here:"
-	  	puts "As you come into this world, something else is also born. You begin your life, and it begins a journey towards you. It moves slowly, but it never stops. Whatever path you take, it will follow - never faster, never slower, always coming. You will run, it will walk. You will rest, it will not. One day, you will linger in the same place too long, you will sit too still, you will sleep too deep. And when, too late, you rise to go, you will notice a second shadow next to yours. Your life will then be over."
+	  	puts "You've reached room 12! You're next journey awaits!"
+	  	puts ' 
+									.  .  .  .  . .  
+							 .   			  				 .
+						.  					|^|			/_\		.
+					.				/	\		| |			|	|			.
+				.		 _		|	|  /	 \	 /	 \	  	.
+			.			|	|		|	| /		  \	/			\			  .
+		. 		 /	 \ /	 \|		  |	|			|			/ \ .
+	 .  		/			/			\		  | |			|			|	|	 .
+	.				 |	 ||			|		  |/			 \		|	|		.
+ . 				 |	 ||			|		  /					\	 /	 \   .
+. 				 |	 ||			|			|					|	/			\	  .
+.	 		 |	 |	 ||		GALLIFREY         |	|			|	  .
+.	 		/	\ /		 /			 \		|         |	|			|	  .
+.	 		|	|	|		/			 *	\		|         |	 \	 /	  .
+.	 		|	|/		|			/ \ |		/         \		|	|		  .
+ .	 /	 \		|			|	|	|	  |         |		|	|		 .
+	.	/ 		\		|			|	|	|	  |         |		|	|	  .
+	 .|			|		|			|	|	|	  |         |		|	|  .
+	 	.			|		|			|	|	|	  |         |		|	| .
+	 		.		|		|			|	|	|	  |         |		|	 .
+	 		  .	|		|			|	|	|	  |         |		 .
+	 			   .	|			|	|	|	 /					 \ .
+	 			  	  .	 .  .  .	.	 .	.	 .  .
+	 			  	  '
   	end
   end
 
