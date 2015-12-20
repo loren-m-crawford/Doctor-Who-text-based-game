@@ -69,7 +69,9 @@ class Game
     end
   end
 end
+
 #######################################################
+
 class World
   attr_accessor :room
   FLOORS = 3
