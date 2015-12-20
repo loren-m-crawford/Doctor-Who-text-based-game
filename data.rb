@@ -17,7 +17,7 @@ ROOMS = {
 		'room number' => 9,
 		'hint' => 'You are on the wrong side of the castle.',
 		'question' => "In the episode 'Kill the Moon', what does the moon turn out to be?",
-		'answer' =>'egg',
+		'answer' =>'an egg',
 		'locked' => true
 	},
 	[0,0,1] => {
@@ -84,7 +84,7 @@ ROOMS = {
 		'locked' => true
 	},
 	[1,0,1] => {
-		'room number' => 'the room you started in',
+		'room number' => 'room you started in',
 		'hint' => '', 
 		'question' => '',
 		'answer' =>'',
