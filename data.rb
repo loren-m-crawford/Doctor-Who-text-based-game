@@ -84,7 +84,7 @@ ROOMS = {
 		'locked' => true
 	},
 	[1,0,1] => {
-		'room number' => 'This is where you started. No hints here.',
+		'room number' => 'the room you started in. No hints here.',
 		'hint' => '', 
 		'question' => '',
 		'answer' =>'',
