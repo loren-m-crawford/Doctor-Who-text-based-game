@@ -53,7 +53,7 @@ class Game
   end
 
   def move_player(move)
-    @world.send("move_player_#{move}", @player)
+    @world.send :"move_player_#{move}", @player
   end
 end
 
