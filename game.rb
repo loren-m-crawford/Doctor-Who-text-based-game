@@ -28,13 +28,13 @@ class Game
        | ||~~~|!|!| O || |    as to where room 12 is. If you answer incorrectly the door
        | ||~~~| |.|___|| |    will not open and you must move on. Some rooms are not locked.
        | ||¯¯¯| | |¯¯¯|| |
-       | ||   | | |   || |    You may move backward, forward, right, left, up a floor, and 
+       | ||   | | |   || |    You may move backward, forward, right, left, up a floor, or 
        | ||___| | |___|| |    down a floor.
        | ||¯¯¯| | |¯¯¯|| |    
        | ||   | | |   || |    Which direction would you like to go in first?
        | ||___| | |___|| |     
       |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|   Please type in 'backward', 'forward', 'right', 'left', 'up',
-                              and 'down.'
+                              or 'down.'
       "
 
     get_player_move
@@ -53,20 +53,7 @@ class Game
   end
 
   def move_player(move)
-    case move
-    when 'right'
-      @world.move_player_right(@player)
-    when 'left'
-      @world.move_player_left(@player)
-    when 'forward'
-      @world.move_player_forward(@player)
-    when 'backward'
-      @world.move_player_backward(@player)
-    when 'up'
-      @world.move_player_up_floor(@player)
-    when 'down'
-      @world.move_player_down_floor(@player)
-    end
+    @world.send("move_player_#{move}", @player)
   end
 end
 
@@ -122,7 +109,7 @@ class World
     end 
   end
 
-  def move_player_up_floor(player)
+  def move_player_up(player)
     if player.z_coord < FLOORS - 1
       player.z_coord += 1 
       puts 'You just moved up a floor.'
@@ -132,7 +119,7 @@ class World
     end 
   end
 
-  def move_player_down_floor(player)
+  def move_player_down(player)
     if player.z_coord > 0
       player.z_coord -= 1 
       puts 'You just moved down a floor.'
@@ -145,7 +132,7 @@ end
 
 ############################################
 class Room
-  attr_accessor :locked, :room_ques, :room_num, :hint, :z_coord, :x_coord, :y_coord 
+  attr_accessor :z_coord, :x_coord, :y_coord 
 
   def enter_room(z_coord,x_coord,y_coord)
     if ROOMS[[z_coord, x_coord, y_coord]]['locked'] == false
