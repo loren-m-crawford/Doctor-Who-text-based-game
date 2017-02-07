@@ -1,0 +1,25 @@
+This is a text-based game is based on the penultimate episode of the ninth
+series of Doctor Who episode, 'Heaven Sent', where the Doctor finds himself
+transported to a waterlocked castle with a vieled monster seeking to kill
+him if he doesn't confess what he knows (thanks Steven Moffat).
+
+
+          _____|#|_____
+         |_____________|      Welcome!
+        |_______________|     You are the Doctor in search for room 12.
+      |||_POLICE_##_BOX_|||   You've just been transported to a three story castle.
+       | |¯|¯|¯|||¯|¯|¯| |
+       | |-|-|-|||-|-|-| |    As you move through the castle, you will find numbered
+       | |_|_|_|||_|_|_| |    rooms that are locked. To unlock a room you must answer a
+       | ||~~~| | |¯¯¯|| |    question; if you answer it correctly, you will get a hint
+       | ||~~~|!|!| O || |    as to where room 12 is. If you answer incorrectly the door
+       | ||~~~| |.|___|| |    will not open and you must move on. Some rooms are not locked.
+       | ||¯¯¯| | |¯¯¯|| |
+       | ||   | | |   || |    You may move backward, forward, right, left, up a floor, or
+       | ||___| | |___|| |    down a floor.
+       | ||¯¯¯| | |¯¯¯|| |
+       | ||   | | |   || |    Which direction would you like to go in first?
+       | ||___| | |___|| |
+      |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|   Please type in 'backward', 'forward', 'right', 'left', 'up',
+                              or 'down.'
+
