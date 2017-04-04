@@ -1,0 +1,52 @@
+require_relative 'data'
+require_relative 'world'
+require_relative 'room'
+require_relative 'player'
+#require_relative 'game_intro.txt'
+
+class Game
+  MOVES = [
+    'forward', 'backward', 'right', 'left', 'up', 'down'
+  ]
+  def initialize
+    @world = World.new
+    @player = Player.new
+  end
+
+  def get_player_move
+    move = gets.downcase.strip
+    check_move(move)
+  end
+
+  def check_move(move)
+    MOVES.find { |m| standardized_move = m if /#{move}/ =~ m }
+    direct_player(standardized_move)
+  end
+
+  def direct_player(standardized_move)
+    if standardized_move
+      move_player(standardized_move)
+    else
+      binding.pry
+      give_move_feedback
+    end
+  end
+
+  def give_move_feedback
+      puts "That's not a valid move. Please type in 'b for backward', 'f for forward', 'r for right', 'l for left', 'u for up', and 'd for down.'"
+  end
+
+  def room_number
+    ROOMS[[@player.z_coord,@player.x_coord,@player.y_coord]]['room number']
+  end
+
+  def check_room_number
+     room_number != 12
+  end
+
+  def move_player(move)
+    puts move
+    #@world.send :"move_player_#{move}", @player
+  end
+end
+

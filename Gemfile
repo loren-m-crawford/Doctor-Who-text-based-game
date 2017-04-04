@@ -4,4 +4,5 @@ source 'https://rubygems.org' do
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
+  gem 'reek'
 end
