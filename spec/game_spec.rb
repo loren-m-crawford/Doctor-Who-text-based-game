@@ -9,10 +9,6 @@ describe Game do
     $stdin = StringIO.new("DOwN ")
   end
 
-  after do
-    $stdin = STDIN
-  end
-
   describe "#get_player_move" do
     it "downcases and strips the user input" do
       expect(@game).to receive(:get_player_move).and_return('down')

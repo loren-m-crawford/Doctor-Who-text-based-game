@@ -37,6 +37,5 @@ class Game
   def check_room_number
      room_number != 12
   end
-
 end
 
