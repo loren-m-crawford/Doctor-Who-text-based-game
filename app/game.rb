@@ -7,7 +7,8 @@ class Game
   MOVES = [
     'forward', 'backward', 'right', 'left', 'up', 'down'
   ]
-  POSTIVE_FEEDBACK = [
+
+  POSITIVE_FEEDBACK = [
     'Correct!',"You must be a mad man with a box, because that's correct!",
     "Did you just pretend that was a plan? Well it worked!",
     "Aren't you a right good Whovian!?",
@@ -26,6 +27,7 @@ class Game
 
   def get_player_move
     move = $stdin.gets.downcase.strip
+    exit if move == 'exit'
     check_move(move)
   end
 
@@ -42,12 +44,13 @@ class Game
 
   #TODO break this apart
   def play
-    while !player_room.winning_room? do
+    while !player_room.winning_room?
       get_player_move
       @player.move(@standardized_move)
-      break if player_room.winning_room?
+
       puts "You're in #{player_room.room_number}."
       puts "#{player_room.question}"
+      puts File.read('winning_text.txt') if player_room.winning_room?
       get_player_answer
       if check_answer == false
         puts "That's not right. Try again."
@@ -56,8 +59,6 @@ class Game
         puts "#{player_room.hint}"
       end
     end
-    puts File.read('winning_text.txt')
-    return
   end
 
   def give_move_feedback
@@ -76,9 +77,8 @@ class Game
   private
   def run_game
     game_intro
-    get_player_move
   end
 end
 
-game = Game.new
-game.send(:run_game)
+# game = Game.new
+# game.send(:run_game)
