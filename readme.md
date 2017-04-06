@@ -1,4 +1,4 @@
-#Taking the Long Way Round
+# Taking the Long Way Round
 
 This repo contains the beginning of a text-based game based on the penultimate episode of the ninth series of Doctor Who episode, "Heaven Sent", where the Doctor finds himself transported to a waterlocked castle with a vieled monster seeking to kill him if he doesn't confess what he knows (thanks Steven Moffat). 
 
@@ -8,8 +8,10 @@ In this game, you are the doctor in search for room 12. As you move through the 
 Have fun and good luck!
 ---
 
-##Technologies used 
+## Technologies used 
 * Ruby 2.2.3
+* Rspec 3.5.0
+* Pry 0.10.4
 
 ---
 
