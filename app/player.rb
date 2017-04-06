@@ -6,16 +6,18 @@ attr_accessor :z_coord, :x_coord, :y_coord, :game
 
   def initialize(game)
     @z_coord, @x_coord, @y_coord = 1, 0, 1
-    @game = game 
+    @room = Room.new(self)
+    @game = game
   end
 
   def where_am_i
     floor = z_coord
+    room_number = @room.room_number
     return "You're on floor #{floor}, by room #{room_number}."
   end
 
-  def room_number
-    ROOMS[[@z_coord, @x_coord, @y_coord]][:room_number]
+  def coordinates 
+    [@z_coord, @x_coord, @y_coord]
   end
 
   def move

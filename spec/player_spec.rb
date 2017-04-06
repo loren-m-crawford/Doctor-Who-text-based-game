@@ -1,5 +1,4 @@
 require_relative '../app/player'
-require_relative '../app/world'
 require_relative '../app/room'
 require_relative '../app/game'
 require 'rspec'
@@ -10,16 +9,21 @@ describe Player do
   before do
     @game = Game.new
     @player= Player.new(@game)
+    @room = Room.new(@player)
   end
 
   describe '#where_am_i' do
     it 'gives player their location' do
-      allow_any_instance_of(Player).to receive(:room_number).and_return(5)
       floor = @player.z_coord
-      room = @player.room_number
+      room = @room.room_number
+      allow(@room).to receive(:room_number).and_return(5)
 
       expect(@player.where_am_i).to eq("You're on floor #{floor}, by room #{room}.")
     end
+  end
+
+  describe 'enter_room' do
+
   end
 
   describe '#move' do

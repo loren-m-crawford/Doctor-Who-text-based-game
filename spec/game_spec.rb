@@ -7,17 +7,41 @@ require 'spec_helper'
 describe Game do
   before do
     @game = Game.new
-    $stdin = StringIO.new("DOwN ")
   end
 
-  after do
-     $stdin = STDIN
+  describe '#new' do
+    it 'returns game introduction text' do
+      expect(File).to receive(:read).with("game_intro.txt") 
+      @game.game_intro
+    end
   end
 
   describe "#get_player_move" do
+    before do
+      $stdin = StringIO.new("DOwN ")
+    end
+
+    after do
+      $stdin = STDIN
+    end
+
     it "downcases and strips the user input" do
       expect(@game).to receive(:check_move).with('down')
       @game.get_player_move
+    end
+  end
+
+  describe '#get_player_answer' do
+    before do
+      $stdin = StringIO.new("DocTor WhO ")
+    end
+
+    after do
+      $stdin = STDIN
+    end
+
+    it 'downcases and strips user input' do
+      expect(@game.get_player_answer).to eq 'doctor who'
     end
   end
 
@@ -39,20 +63,4 @@ describe Game do
     end
   end
 
-  describe '#check_room_number' do
-    context 'room number is not 12' do
-      it 'returns true' do
-        expect(@game.check_room_number).to be true
-      end
-    end
-
-    context 'room number is 12' do
-      before do
-        allow_any_instance_of(Player).to receive(:room_number).and_return(12)
-      end
-      it 'return false' do
-        expect(@game.check_room_number).to be false
-      end
-    end
-  end
 end
