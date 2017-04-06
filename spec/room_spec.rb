@@ -8,8 +8,7 @@ require 'spec_helper'
 describe Room do
 
   before do
-    @game = Game.new
-    @player = Player.new(@game)
+    @player = Player.new
     @room = Room.new(@player)
     allow(@room).to receive(:coordinates).and_return([0,0,1])
   end

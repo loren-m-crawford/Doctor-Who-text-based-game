@@ -1,5 +1,4 @@
 source 'https://rubygems.org' do
-  gem 'hunspell', '~> 0.1.2'
 
   group :test, :development do
     gem 'reek'

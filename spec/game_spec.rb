@@ -45,7 +45,18 @@ describe Game do
     end
   end
 
+  describe '#play' do
+  end
+
   describe "#check_move" do
+    before { allow(@game).to receive(:get_player_answer).and_return('the silence') }
+    context 'player starts at [1,0,1]' do
+      it 'tells player the room and asks question' do
+        @game.check_move('up')
+        expect(@game.player.coordinates).to eq ([2,0,1])
+      end
+    end
+
     context 'user provides incomplete move' do
       it "returns standardized input" do
         move = "righ"
