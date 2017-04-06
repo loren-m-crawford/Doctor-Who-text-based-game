@@ -26,6 +26,7 @@ class Game
 
   def get_player_move
     move = $stdin.gets.downcase.strip
+    exit if move == 'exit'
     check_move(move)
   end
 
@@ -42,21 +43,19 @@ class Game
 
   #TODO break this apart
   def play
-    while !player_room.winning_room? do
-      get_player_move
-      @player.move(@standardized_move)
-      break if player_room.winning_room?
-      puts "You're in #{player_room.room_number}."
-      puts "#{player_room.question}"
-      get_player_answer
-      if check_answer == false
-        puts "That's not right. Try again."
-      else
-        puts POSITIVE_FEEDBACK.sample
-        puts "#{player_room.hint}"
-      end
+    get_player_move
+    @player.move(@standardized_move)
+
+    puts "You're in #{player_room.room_number}."
+    puts "#{player_room.question}"
+    get_player_answer
+    if check_answer == false
+      puts "That's not right. Try again."
+    else
+      puts POSITIVE_FEEDBACK.sample
+      puts "#{player_room.hint}"
     end
-    puts File.read('winning_text.txt')
+    puts File.read('winning_text.txt') if player_room.winning_room?
     return
   end
 
@@ -80,5 +79,5 @@ class Game
   end
 end
 
-game = Game.new
-game.send(:run_game)
+# game = Game.new
+# game.send(:run_game)
