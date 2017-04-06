@@ -39,38 +39,6 @@ describe Game do
     end
   end
 
-  describe '#forward' do
-    context 'user provides forward input' do
-      it 'returns +1 ' do
-        expect(@game.forward).to eq 1
-      end
-    end
-
-    describe '#backward' do
-      context 'user provides backward input' do
-        it 'returns -1' do
-          expect(@game.backward).to eq -1
-        end
-      end
-    end
-
-    describe '#right' do
-      context 'user provides right input' do
-        it 'returns -1' do
-          expect(@game.right).to eq 1
-        end
-      end
-    end
-
-    describe '#left' do
-      context 'user provides left input' do
-        it 'returns -1' do
-          expect(@game.left).to eq -1
-        end
-      end
-    end
-  end
-
   describe '#check_room_number' do
     context 'room number is not 12' do
       it 'returns true' do

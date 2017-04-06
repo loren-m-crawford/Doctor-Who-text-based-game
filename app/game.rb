@@ -32,14 +32,4 @@ class Game
   def check_room_number
     @player.room_number != 12
   end
-
-  MOVES.each_with_index do |value, index|
-    define_method(value) do
-      if index.even?
-        1
-      else
-        -1
-      end
-    end
-  end
 end
