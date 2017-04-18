@@ -2,24 +2,16 @@ require_relative 'data'
 #require_relative 'game_intro.txt'
 
 class Player
-  attr_accessor :z_coord, :x_coord, :y_coord, :room
+  attr_accessor :z_coord, :x_coord, :y_coord, :coordinates
 
   MAX_MOVE = 2
   MIN_MOVE = 0
 
   def initialize
-    @z_coord, @x_coord, @y_coord = 1, 0, 1
-    @room = Room.new(self)
-  end
-
-  def where_am_i
-    floor = z_coord
-    room_number = @room.room_number
-    return "You're on floor #{floor}, by room #{room_number}."
-  end
-
-  def coordinates 
-    [@z_coord, @x_coord, @y_coord]
+    @z_coord = 1
+    @x_coord = 0
+    @y_coord = 1
+    @coordinates = [@z_coord, @x_coord, @y_coord]
   end
 
   def move(move)

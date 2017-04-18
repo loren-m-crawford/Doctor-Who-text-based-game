@@ -6,7 +6,7 @@ class Room
   attr_reader :coordinates
 
   def initialize(player)
-    @coordinates = [player.z_coord, player.x_coord, player.y_coord]
+    @coordinates = player.coordinates
   end
 
   def room_number

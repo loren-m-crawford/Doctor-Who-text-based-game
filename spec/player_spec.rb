@@ -8,19 +8,9 @@ require 'spec_helper'
 describe Player do
   before do
     @player= Player.new
-    @room = Room.new(@player)
   end
 
-  describe '#where_am_i' do
-    it 'gives player their location' do
-      floor = @player.z_coord
-      room = @room.room_number
-      allow(@room).to receive(:room_number).and_return(5)
-
-      expect(@player.where_am_i).to eq("You're on floor #{floor}, by room #{room}.")
-    end
-  end
-
+  #TODO
   describe 'enter_room' do
 
   end
