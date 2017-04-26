@@ -1,7 +1,6 @@
 require_relative 'data'
 require_relative 'room'
 require_relative 'player'
-require 'pry'
 
 class Game
   MOVES = [
@@ -90,6 +89,3 @@ class Game
     game_intro
   end
 end
-
-# game = Game.new
-# game.send(:run_game)
