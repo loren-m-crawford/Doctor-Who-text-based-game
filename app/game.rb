@@ -14,7 +14,7 @@ class Game
     "Aren't you a right good Whovian!?",
     "Well done! That wasn't wibbly wobbly at all! :)"]
 
-  attr_accessor :standardized_move, :player
+  attr_reader :standardized_move, :player
 
   def initialize
     @player = Player.new
@@ -26,38 +26,38 @@ class Game
   end
 
   def get_player_move
+    print 'which way would you like to go?'
     move = $stdin.gets.downcase.strip
     exit if move == 'exit'
     check_move(move)
   end
 
   def check_move(move)
-    MOVES.each do |m|
-      @standardized_move = m if m =~ Regexp.new(move)
-    end
-    give_move_feedback if @standardized_move.nil?
+    standardized_move = MOVES.select { |m| m =~ Regexp.new(move) }.first
+    standardized_move.nil? ? give_move_feedback : standardized_move
   end
 
   def player_room
      Room.new(@player)
   end
 
-  #TODO break this apart
+  def print_question
+    print "You're in #{player_room.room_number}. Here's your question: #{player_room.question}"
+  end
+
   def play
     while !player_room.winning_room?
-      get_player_move
-      @player.move(@standardized_move)
-
-      puts "You're in #{player_room.room_number}."
-      puts "#{player_room.question}"
-      puts File.read('winning_text.txt') if player_room.winning_room?
+      move = get_player_move
+      @player.move(move)
+      player_wins? ? break : print_question
       get_player_answer
-      if check_answer == false
-        puts "That's not right. Try again."
-      else
-        puts POSITIVE_FEEDBACK.sample
-        puts "#{player_room.hint}"
-      end
+    end
+  end
+
+  def player_wins?
+    if player_room.winning_room?
+      puts File.read('winning_text.txt') 
+      return true
     end
   end
 
@@ -67,11 +67,17 @@ class Game
   end
 
   def get_player_answer
-    @answer = $stdin.gets.downcase.strip
+    player_answer = $stdin.gets.downcase.strip
+    check_answer(player_answer)
   end
 
-  def check_answer
-    player_room.answer == @answer
+  def check_answer(player_answer)
+    if player_room.answer != player_answer
+      puts "That's not right. Try again."
+    else
+      puts POSITIVE_FEEDBACK.sample
+      puts "#{player_room.hint}"
+    end
   end
 
   private

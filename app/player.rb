@@ -2,7 +2,7 @@ require_relative 'data'
 #require_relative 'game_intro.txt'
 
 class Player
-  attr_accessor :z_coord, :x_coord, :y_coord, :coordinates
+  attr_accessor :z_coord, :x_coord, :y_coord
 
   MAX_MOVE = 2
   MIN_MOVE = 0
@@ -11,7 +11,10 @@ class Player
     @z_coord = 1
     @x_coord = 0
     @y_coord = 1
-    @coordinates = [@z_coord, @x_coord, @y_coord]
+  end
+
+  def coordinates
+    [@z_coord, @x_coord, @y_coord]
   end
 
   def move(move)
