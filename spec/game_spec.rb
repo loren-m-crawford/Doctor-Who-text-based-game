@@ -54,16 +54,32 @@ describe Game do
   end
 
   describe '#print_question' do
-    before do
-      $stdin = StringIO.new("up")
-      @game.player.z_coord, @game.player.x_coord, @game.player.y_coord = 0,0,1
+    context 'user is by a room with a question' do
+      before do
+        $stdin = StringIO.new("up")
+        @game.player.z_coord, @game.player.x_coord, @game.player.y_coord = 0,0,1
+      end
+
+      after { $stdin = STDIN }
+
+      it 'prints the player the room and question they are in' do
+        output = "You're in #{@game.player_room.room_number}. Here's your question: #{@game.player_room.question}\n\n"
+        expect { @game.print_question }.to output(output).to_stdout
+      end
     end
 
-    after { $stdin = STDIN }
+    context "user is by a room that doesn't have a question" do
+      before do
+        $stdin = StringIO.new("up")
+        @game.player.z_coord, @game.player.x_coord, @game.player.y_coord = 1,1,1
+      end
 
-    it 'prints the player the room and question they are in' do
-      output = "You're in #{@game.player_room.room_number}. Here's your question: #{@game.player_room.question}"
-      expect { @game.print_question }.to output(output).to_stdout
+      after { $stdin = STDIN }
+
+      it 'does not print question if the room does not have one' do
+        output = "You're in #{@game.player_room.room_number}. This room doesn't have a question. Keep going.\n\n"
+        expect { @game.print_question }.to output(output).to_stdout
+      end
     end
   end
 

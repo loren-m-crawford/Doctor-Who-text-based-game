@@ -26,7 +26,7 @@ class Game
   end
 
   def get_player_move
-    print 'which way would you like to go?'
+    print "Which way would you like to go?\n\n"
     move = $stdin.gets.downcase.strip
     exit if move == 'exit'
     check_move(move)
@@ -42,7 +42,11 @@ class Game
   end
 
   def print_question
-    print "You're in #{player_room.room_number}. Here's your question: #{player_room.question}"
+    if player_room.question.empty?
+      print "You're in #{player_room.room_number}. This room doesn't have a question. Keep going.\n\n"
+    else
+      print "You're in #{player_room.room_number}. Here's your question: #{player_room.question}\n\n"
+    end
   end
 
   def play
@@ -62,7 +66,7 @@ class Game
   end
 
   def give_move_feedback
-      puts "That's not a valid move. Please type in 'b for backward', 'f for forward', 'r for right', 'l for left', 'u for up', and 'd for down.'"
+      puts "That's not a valid move. Please type in backward, forward, right, left', up, and down."
       get_player_move
   end
 
@@ -73,9 +77,10 @@ class Game
 
   def check_answer(player_answer)
     if player_room.answer != player_answer
-      puts "That's not right. Try again."
+      print "That's not right. Try again.\n"
     else
       puts POSITIVE_FEEDBACK.sample
+      puts "\n"
       puts "#{player_room.hint}"
     end
   end
