@@ -10,16 +10,10 @@ describe Player do
     @player= Player.new
   end
 
-  #TODO
-  describe 'enter_room' do
-
-  end
-
   describe '#move' do
     context 'standardized_move is forward' do
-      before do
-        @move = 'forward'
-      end
+      before { @move = 'forward' }
+
       context 'a player can move forward' do
         it 'changes players y_coord by +1' do
           @player.y_coord = 0
@@ -40,9 +34,8 @@ describe Player do
     end
 
     context 'standardized_move is backward' do
-      before do
-        @move = 'backward'
-      end
+      before { @move = 'backward' }
+
       context 'a player can move backward' do
         it 'changes players y_coord by -1' do
           @player.y_coord = 1
@@ -63,9 +56,8 @@ describe Player do
     end
 
     context 'standardized_move is right' do
-      before do
-        @move = 'right'
-      end
+      before { @move = 'right' }
+
       context 'a player can move right' do
         it 'changes players x_coord by 1' do
           @player.x_coord = 1
@@ -86,9 +78,8 @@ describe Player do
     end
 
     context 'standardized_move is left' do
-      before do
-        @move = 'left'
-      end
+      before { @move = 'left' }
+
       context 'a player can move left' do
         it 'changes players x_coord by -1' do
           @player.x_coord = 1
@@ -109,9 +100,8 @@ describe Player do
     end
 
     context 'standardized_move is up' do
-      before do
-        @move = 'up'
-      end
+      before { @move = 'up' }
+
       context 'a player can move up a floor' do
         it 'changes players z_coord by +1' do
           @player.z_coord = 0
@@ -132,9 +122,8 @@ describe Player do
     end
 
     context 'standardized_move is down' do
-      before do
-        @move = 'down'
-      end
+      before { @move = 'down' }
+
       context 'a player can move down a floor' do
         it 'changes players z_coord by -1' do
           @player.z_coord = 2
